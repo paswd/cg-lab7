@@ -29,6 +29,7 @@ public:
     GraphicsData();
     void Add(QPoint point);
     void Delete(QPoint point);
+    void Clear(void);
 
 };
 
@@ -42,11 +43,11 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    int TransformToAbsoluteX(qreal x);
-    int TransformToAbsoluteY(qreal y);
+    int TransformToAbsoluteX(int x);
+    int TransformToAbsoluteY(int y);
 
-    qreal TransformToRelativeX(int x);
-    qreal TransformToRelativeY(int y);
+    //qreal TransformToRelativeX(int x);
+    //qreal TransformToRelativeY(int y);
 
     int GetCurrWidth(void);
     int GetCurrHeight(void);
@@ -54,6 +55,9 @@ public:
     void DrawGraph(void);
     void DrawPoint(QPoint pnt);
     void DrawPointsFromData(void);
+    void DrawBesier(void);
+    qreal FuncX(qreal t);
+    qreal FuncY(qreal t);
 
     void Configure(void);
 
@@ -63,10 +67,13 @@ public:
 public slots:
     void ResizeCheck(void);
 
-protected:
+/*protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);*/
+
+private slots:
+    void on_Apply_clicked();
 
 private:
     Ui::MainWindow *ui;
